@@ -13,6 +13,7 @@ export default function Home() {
       email: "ti2101263@gmail.com",
       phone: "0301-8355308",
       regTitle: "داخلہ فارم: اپنی تفصیلات یہاں درج کریں",
+      feeLabel: "ماہانہ فیس: ",
       sections: {
         tutor: "اے آئی ٹیوٹر",
         library: "مکتبۃ البرہان",
@@ -29,6 +30,7 @@ export default function Home() {
       email: "ti2101263@gmail.com",
       phone: "0301-8355308",
       regTitle: "Registration Form: Enter your details below",
+      feeLabel: "Monthly Fee: ",
       sections: {
         tutor: "AI Tutor",
         library: "Maktaba Al-Burhan",
@@ -44,14 +46,13 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#FDFCF8] text-slate-900" dir={lang === 'ur' ? 'rtl' : 'ltr'}>
       
-      {/* روحانی ہیڈر مع نیویگیشن (فکسڈ امیجز) */}
+      {/* ہیڈر مع کعبہ و مدینہ امیج */}
       <header className="relative h-[400px] flex items-center justify-center overflow-hidden border-b-8 border-yellow-600 bg-emerald-950">
         <div className="absolute inset-0 flex opacity-40 z-0">
           <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800" alt="Kaaba" className="w-1/2 h-full object-cover" />
           <img src="https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=800" alt="Madinah" className="w-1/2 h-full object-cover scale-x-[-1]" />
         </div>
 
-        {/* ٹاپ مینو */}
         <nav className="absolute top-4 left-4 right-4 flex flex-wrap justify-between items-center z-30 gap-2">
           <div className="flex gap-2 flex-wrap">
             <button className="bg-emerald-800 text-white px-4 py-1.5 rounded-lg text-sm font-bold border border-white/10">{t.sections.tutor}</button>
@@ -71,77 +72,66 @@ export default function Home() {
         </div>
       </header>
 
-      {/* وہ ایڈز/رجسٹریشن والی پٹی جو مس ہو گئی تھی */}
-      <div className="bg-yellow-600 text-black py-4 text-center font-bold text-lg md:text-xl shadow-inner border-b-2 border-yellow-700">
+      {/* رجسٹریشن پٹی (ایڈز لائن) */}
+      <div className="bg-yellow-600 text-black py-4 text-center font-bold text-lg md:text-xl shadow-inner border-b-2 border-yellow-700 sticky top-0 z-40">
         📢 {t.regTitle}
       </div>
 
-      {/* مین ڈیش بورڈ سیکشن */}
       <section className="container mx-auto py-16 px-4">
+        {/* مین کارڈز مع 5 ڈالر فیس */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {/* AI Tutor Card */}
-          <div className="bg-emerald-50 p-8 rounded-3xl border-2 border-emerald-100 hover:shadow-xl transition-all text-center">
+          <div className="bg-emerald-50 p-8 rounded-3xl border-2 border-emerald-100 text-center shadow-sm">
             <div className="text-5xl mb-5">🤖</div>
-            <h3 className="text-2xl font-bold text-emerald-950 mb-3">{t.sections.tutor}</h3>
-            <p className="text-base opacity-70">سوال پوچھیں اور فوری جواب پائیں</p>
+            <h3 className="text-2xl font-bold text-emerald-950 mb-1">{t.sections.tutor}</h3>
+            <p className="text-emerald-700 font-bold mb-3">{t.feeLabel} $5 / Month</p>
+            <p className="text-sm opacity-70">جدید اے آئی سے سمارٹ تعلیم</p>
           </div>
-          {/* Library Card */}
-          <div className="bg-yellow-50 p-8 rounded-3xl border-2 border-yellow-100 hover:shadow-xl transition-all text-center">
+          <div className="bg-yellow-50 p-8 rounded-3xl border-2 border-yellow-100 text-center shadow-sm">
             <div className="text-5xl mb-5">📚</div>
             <h3 className="text-2xl font-bold text-emerald-950 mb-3">{t.sections.library}</h3>
-            <p className="text-base opacity-70">آن لائن کتب کا ذخیرہ</p>
+            <p className="text-sm opacity-70">مکتبۃ البرہان: ڈیجیٹل کتب</p>
           </div>
-          {/* Classroom Card */}
-          <div className="bg-blue-50 p-8 rounded-3xl border-2 border-blue-100 hover:shadow-xl transition-all text-center">
+          <div className="bg-blue-50 p-8 rounded-3xl border-2 border-blue-100 text-center shadow-sm">
             <div className="text-5xl mb-5">🏫</div>
             <h3 className="text-2xl font-bold text-emerald-950 mb-3">{t.sections.classroom}</h3>
-            <p className="text-base opacity-70">لائیو کلاس میں شامل ہوں</p>
+            <p className="text-sm opacity-70">لائیو آن لائن کلاسز</p>
           </div>
-          {/* Schedule Card */}
-          <div className="bg-purple-50 p-8 rounded-3xl border-2 border-purple-100 hover:shadow-xl transition-all text-center">
+          <div className="bg-purple-50 p-8 rounded-3xl border-2 border-purple-100 text-center shadow-sm">
             <div className="text-5xl mb-5">⏰</div>
             <h3 className="text-2xl font-bold text-emerald-950 mb-3">{t.sections.schedule}</h3>
-            <p className="text-base opacity-70">آئندہ کلاسز اور ریمائنڈرز</p>
+            <p className="text-sm opacity-70">ٹائم ٹیبل اور ریمائنڈرز</p>
           </div>
         </div>
 
-        {/* کورسز کا حصہ */}
-        <h2 className="text-4xl font-bold text-center mb-12 text-emerald-950">ہمارے نمایاں کورسز</h2>
+        {/* کورسز مع 50 ڈالر فیس */}
+        <h2 className="text-4xl font-bold text-center mb-12 text-emerald-950">کورسز اور فیس کی تفصیلات</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
-            { n: "نورانی قاعدہ", img: "1000484726.jpg" },
-            { n: "ناظرہ قرآن", img: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=400" },
-            { n: "دروس اللغۃ العربیہ", img: "1000484729.jpg" },
-            { n: "تعلیمِ بالغان", img: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=400" },
-            { n: "چہل حدیث", img: "hadith.jpg" },
-            { n: "روز مرہ کے مسائل", img: "fiqh.jpg" }
+            { n: "نورانی قاعدہ", fee: "50", img: "1000484726.jpg" },
+            { n: "ناظرہ قرآن", fee: "50", img: "1000484727.jpg" },
+            { n: "دروس اللغۃ العربیہ", fee: "50", img: "1000484729.jpg" }
           ].map((c, i) => (
-            <div key={i} className="bg-white rounded-[2.5rem] shadow-xl overflow-hidden border border-slate-100 group">
-              <img src={c.img} alt={c.n} className="h-56 w-full object-cover group-hover:scale-105 transition-transform" />
+            <div key={i} className="bg-white rounded-[2.5rem] shadow-xl overflow-hidden border border-slate-100">
+              <img src={c.img} alt={c.n} className="h-56 w-full object-cover" />
               <div className="p-8 text-center">
-                <h4 className="text-2xl font-bold mb-5">{c.n}</h4>
+                <h4 className="text-2xl font-bold mb-1">{c.n}</h4>
+                <p className="text-emerald-700 font-bold mb-5">{t.feeLabel} ${c.fee} / Month</p>
                 <div className="flex gap-2 mb-5">
-                  <input placeholder="نام" className="w-1/2 bg-slate-50 p-3 rounded-xl text-sm outline-none focus:ring-1 ring-emerald-500" />
-                  <input placeholder="نمبر" className="w-1/2 bg-slate-50 p-3 rounded-xl text-sm outline-none focus:ring-1 ring-emerald-500" />
+                  <input placeholder="نام" className="w-1/2 bg-slate-50 p-3 rounded-xl text-sm outline-none border border-emerald-100" />
+                  <input placeholder="نمبر" className="w-1/2 bg-slate-50 p-3 rounded-xl text-sm outline-none border border-emerald-100" />
                 </div>
-                <button className="w-full bg-emerald-900 text-yellow-50 py-4 rounded-xl font-bold text-md">
-                  {t.enroll}
-                </button>
+                <button className="w-full bg-emerald-900 text-yellow-50 py-4 rounded-xl font-bold transition-colors hover:bg-emerald-800">{t.enroll}</button>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* فوٹر */}
-      <footer className="bg-emerald-950 text-emerald-100 py-16 text-center border-t-8 border-yellow-600 px-6 mt-16">
+      <footer className="bg-emerald-950 text-emerald-100 py-16 text-center border-t-8 border-yellow-600 px-6">
         <p className="text-2xl font-bold text-yellow-500 mb-2">{t.phone}</p>
         <p className="text-lg font-light mb-8 lowercase opacity-80">{t.email}</p>
         <p className="text-[12px] opacity-40 tracking-widest uppercase">© 2026 AL-BURHAN ISLAMIC CENTRE</p>
       </footer>
-      <style dangerouslySetInnerHTML={{ __html: `
-  header img { content: url("https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800") !important; }
-  .bg-yellow-600 { display: block !important; }
-` }} />
     </main>
   );
+}
