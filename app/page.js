@@ -1,90 +1,95 @@
 import React from 'react';
 
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-gray-50 font-sans" dir="rtl">
-      {/* Navigation Bar */}
-      <nav className="bg-emerald-800 text-white shadow-lg sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20 items-center">
-            <div className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold tracking-wider">البرھان مرکز</span>
-            </div>
-            <div className="hidden md:flex space-x-reverse space-x-8 text-lg">
-              <a href="#" className="hover:text-emerald-200 transition">ہوم</a>
-              <a href="#library" className="hover:text-emerald-200 transition">مکتبہ (لائبریری)</a>
-              <a href="#courses" className="hover:text-emerald-200 transition">کورسز</a>
-              <a href="#contact" className="hover:text-emerald-200 transition">رابطہ</a>
-            </div>
-          </div>
-        </div>
-      </nav>
+const courses = [
+  { title: "Noorani Qaida", category: "Foundation", desc: "Start your journey of Quranic recitation with proper Tajweed and pronunciation." },
+  { title: "Quran Reading (Nazira)", category: "Foundation", desc: "Practice reciting the Holy Quran with melody and correct rules of Tajweed." },
+  { title: "Duroos-ul-Lughat-ul-Arabia", category: "Language", desc: "The world-renowned curriculum for learning Arabic speaking and grammar." },
+  { title: "Quranic Arabic", category: "Language", desc: "Understand the vocabulary and linguistic style of the Holy Quran directly." },
+  { title: "Chahal Hadith", category: "Ethics", desc: "Study 40 essential Hadiths that provide a complete code for an ideal life." },
+  { title: "Taleem-ul-Islam", category: "Jurisprudence", desc: "A comprehensive guide to Islamic beliefs, worship, and basic rulings." },
+  { title: "Daily Life Fiqh", category: "Jurisprudence", desc: "Solutions to contemporary issues and daily matters like Salah and Taharah." },
+  { title: "Adult Education", category: "Special Course", desc: "A simplified course for adults focusing on basic Deen and understanding Salah." }
+];
 
-      {/* Hero Section */}
-      <header className="bg-white py-16 border-b">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-emerald-900 mb-6">البرھان مرکز برائے تحقیق و تدریس</h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            علم، تحقیق اور جدید تربیت کا عالمی ادارہ۔ ہم جدید ٹیکنالوجی کے ذریعے مستند علوم کی ترویج کر رہے ہیں۔
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <a href="#courses" className="bg-emerald-700 text-white px-8 py-4 rounded-xl text-xl font-bold shadow-xl hover:bg-emerald-800 transition">ہمارے کورسز دیکھیں</a>
-            <a href="https://wa.me/923018355308" className="bg-white border-2 border-emerald-700 text-emerald-700 px-8 py-4 rounded-xl text-xl font-bold hover:bg-emerald-50 transition">واٹس ایپ رابطہ</a>
-          </div>
-        </div>
+export default function Home() {
+  const whatsappNumber = "923018355308";
+
+  return (
+    <main className="min-h-screen bg-white">
+      {/* Language Switcher Placeholder (Google Translate Integration) */}
+      <div className="bg-slate-100 py-2 px-4 flex justify-end">
+        <div id="google_translate_element"></div>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+            }
+          `
+        }} />
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      </div>
+
+      {/* Header Section */}
+      <header className="bg-emerald-900 text-white py-16 text-center shadow-lg">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Al-Burhan Islamic Centre</h1>
+        <p className="text-xl text-emerald-100 italic">Global Institute for Research and Modern Training</p>
       </header>
 
-      {/* Main Sections */}
-      <section className="py-20 max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Library */}
-          <div className="bg-white p-8 rounded-2xl shadow-md border-t-4 border-emerald-500">
-            <div className="text-4xl mb-4 text-emerald-600">📚</div>
-            <h3 className="text-2xl font-bold mb-4 text-emerald-900">اوپن لائبریری</h3>
-            <p className="text-gray-600 mb-4">تمام طلبہ کے لیے مفت پی ڈی ایف کتابیں اور تحقیقی مقالے دستیاب ہیں۔</p>
-            <span className="text-emerald-700 font-bold underline cursor-pointer">مطالعہ شروع کریں ←</span>
+      {/* Courses Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-4 text-center">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-slate-800 mb-4">Our Short Online Courses</h2>
+            <p className="text-slate-500">Click the registration button to join via WhatsApp</p>
+            <div className="h-1 w-24 bg-emerald-600 mx-auto mt-4"></div>
           </div>
 
-          {/* AI Tutor */}
-          <div className="bg-white p-8 rounded-2xl shadow-md border-t-4 border-emerald-500">
-            <div className="text-4xl mb-4 text-emerald-600">🤖</div>
-            <h3 className="text-2xl font-bold mb-4 text-emerald-900">اے آئی ٹیوٹر</h3>
-            <p className="text-gray-600 mb-4">عربی گرامر اور اسلامی علوم سیکھنے کے لیے ہمارا جدید آرٹیفیشل انٹیلیجنس سسٹم۔</p>
-            <span className="text-sm bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full font-bold">جلد آ رہا ہے ($5)</span>
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+            {courses.map((course, index) => {
+              const message = `Assalam-o-Alaikum!
+I would like to register for the course: "${course.title}" at Al-Burhan Islamic Centre.
 
-          {/* Premium Classes */}
-          <div className="bg-white p-8 rounded-2xl shadow-md border-t-4 border-emerald-500">
-            <div className="text-4xl mb-4 text-emerald-600">🎓</div>
-            <h3 className="text-2xl font-bold mb-4 text-emerald-900">پریمیئم کلاسز</h3>
-            <p className="text-gray-600 mb-4">ماہر اساتذہ کے زیرِ سایہ براہِ راست ویڈیو، آڈیو اور وائٹ بورڈ کے ساتھ آن لائن سیشنز۔</p>
-            <span className="text-sm bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full font-bold">رجسٹریشن جاری ہے ($50)</span>
+My Details:
+Name: 
+Age: 
+Country: 
+Phone: 
+Preferred Time: 
+
+Please provide further details.`;
+
+              return (
+                <div key={index} className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-emerald-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                  <div>
+                    <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full mb-4">
+                      {course.category}
+                    </span>
+                    <h3 className="text-xl font-bold text-slate-800 mb-2">{course.title}</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                      {course.desc}
+                    </p>
+                  </div>
+                  
+                  <a 
+                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center bg-emerald-600 text-white py-3 rounded-xl font-bold hover:bg-emerald-700 active:scale-95 shadow-md transition-all"
+                  >
+                    Register Now
+                  </a>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* --- Ad Slot (For Earning) --- */}
-      <div className="bg-gray-200 py-12 my-10 border-2 border-dashed border-gray-400">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-xl font-bold text-gray-500">اشتہارات کی جگہ (گوگل ایڈسینس سے آمدنی کے لیے)</p>
-          <p className="text-sm text-gray-400 mt-2 italic">یہاں اشتہارات دکھا کر ویب سائٹ سے ارننگ کی جائے گی</p>
-        </div>
-      </div>
-
-      {/* Footer / Contact Details */}
-      <footer className="bg-emerald-900 text-white py-12" id="contact">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6 italic">"ہمارا مشن علم کو تجارت نہیں بلکہ عبادت بنانا ہے۔"</h2>
-          <div className="space-y-4 mb-8 border-t border-emerald-800 pt-8">
-            <p className="text-xl">رابطہ برائے رجسٹریشن و معلومات:</p>
-            <p className="text-3xl font-bold text-emerald-200 tracking-widest">0301-8355308</p>
-            <p className="text-xl opacity-90">ti2101263@gmail.com</p>
-          </div>
-          <div className="pt-8 border-t border-emerald-800 text-emerald-400 text-sm">
-            © 2026 البرھان مرکز - جملہ حقوق محفوظ ہیں۔
-          </div>
-        </div>
+      {/* Footer */}
+      <footer className="bg-slate-900 text-slate-400 py-10 text-center text-sm">
+        <div className="mb-4 text-emerald-500 font-bold">Al-Burhan Islamic Centre</div>
+        <p>© {new Date().getFullYear()} All Rights Reserved | Talha Irfan</p>
       </footer>
-    </div>
+    </main>
   );
 }
