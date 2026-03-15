@@ -1,21 +1,15 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 
-const courses = [
-  { id: 1, titleUr: "نورانی قاعدہ", titleEn: "Noorani Qaida", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400", desc: "بنیادی قاعدہ اور تجوید" },
-  { id: 2, titleUr: "ناظرہ قرآن", titleEn: "Quran Recitation", img: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=400", desc: "صحیح تلفظ کے ساتھ تلاوت" },
-  { id: 3, titleUr: "دروس اللغۃ العربیہ", titleEn: "Arabic Language", img: "https://images.unsplash.com/photo-1590071089561-2087ff1f918e?w=400", desc: "قرآنی عربی زبان سیکھیں" },
-  { id: 4, titleUr: "چہل حدیث", titleEn: "Chahal Hadith", img: "https://images.unsplash.com/photo-1584281722576-9d628d009b0b?w=400", desc: "چالیس منتخب احادیث مبارکہ" },
-  { id: 5, titleUr: "تعلیمِ بالغان", titleEn: "Adult Learning", img: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=400", desc: "بڑوں کے لیے دینی تعلیم" },
-  { id: 6, titleUr: "روز مرہ کے مسائل", titleEn: "Daily Life Fiqh", img: "https://images.unsplash.com/photo-1512632510442-03033f96950e?w=400", desc: "فقہی مسائل اور حل" }
+const teachersList = [
+  { id: "T001", name: "استاد احمد" },
+  { id: "T002", name: "استاد عمر" }
 ];
 
-const teachersList = [{ id: "T001", name: "استاد احمد" }, { id: "T002", name: "استاد عمر" }];
-
 export default function Home() {
+  const [lang, setLang] = useState('ur'); // گوگل ٹرانسلیٹر متبادل
   const [userRole, setUserRole] = useState('student');
   const [registrations, setRegistrations] = useState([]);
-  const [activeClass, setActiveClass] = useState(null);
   const [loginId, setLoginId] = useState('');
 
   useEffect(() => {
@@ -23,56 +17,92 @@ export default function Home() {
     if (saved) setRegistrations(JSON.parse(saved));
   }, []);
 
-  const handleLogin = () => {
-    if (loginId === "admin123") setUserRole('admin');
-    else {
-      const teacher = teachersList.find(t => t.id === loginId);
-      if (teacher) { setUserRole('teacher'); }
-      else alert("غلط آئی ڈی!");
+  const content = {
+    ur: {
+      title: "البرہان اسلامک سینٹر",
+      slogan: "جدید ٹیکنالوجی کے ذریعے قدیم علوم کی ترویج",
+      tutor: "اے آئی ٹیوٹر 🤖",
+      library: "فری لائبریری 📚",
+      classroom: "آن لائن کلاس 🏫",
+      login: "لاگ ان",
+      coursesTitle: "ہمارے خصوصی تعلیمی پروگرام",
+      enroll: "ابھی داخلہ لیں",
+      namePlace: "طالب علم کا نام",
+      phonePlace: "واٹس ایپ نمبر"
+    },
+    en: {
+      title: "Al-Burhan Islamic Centre",
+      slogan: "Promoting Classical Sciences via Modern Tech",
+      tutor: "AI Tutor 🤖",
+      library: "Free Library 📚",
+      classroom: "Online Class 🏫",
+      login: "Login",
+      coursesTitle: "Our Special Educational Programs",
+      enroll: "Enroll Now",
+      namePlace: "Student Name",
+      phonePlace: "WhatsApp Number"
     }
   };
 
+  const courses = [
+    { titleUr: "نورانی قاعدہ", titleEn: "Noorani Qaida", img: "1000484726.jpg", descUr: "تجوید اور بنیادی تلفظ کا بہترین آغاز", descEn: "Perfect start for Tajweed and basic pronunciation" },
+    { titleUr: "دروس اللغۃ العربیہ", titleEn: "Arabic Language", img: "1000484729.jpg", descUr: "قرآنی زبان سمجھنے کے لیے مکمل کورس", descEn: "Comprehensive course to understand Quranic Arabic" },
+    { titleUr: "ناظرہ قرآن", titleEn: "Quran Recitation", img: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=400", descUr: "خوبصورت آواز اور ترتیل کے ساتھ تلاوت", descEn: "Recitation with beautiful voice and rhythm" },
+    { titleUr: "چہل حدیث", titleEn: "Chahal Hadith", img: "https://images.unsplash.com/photo-1584281722576-9d628d009b0b?w=400", descUr: "چالیس منتخب احادیث مبارکہ کا مطالعہ", descEn: "Study of 40 selected blessed Ahadith" },
+    { titleUr: "تعلیمِ بالغان", titleEn: "Adult Learning", img: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=400", descUr: "بڑی عمر کے افراد کے لیے دینی تعلیم", descEn: "Islamic education for adults and seniors" },
+    { titleUr: "روز مرہ کے مسائل", titleEn: "Daily Life Fiqh", img: "https://images.unsplash.com/photo-1512632510442-03033f96950e?w=400", descUr: "زندگی کے عام مسائل کا شرعی حل", descEn: "Shariah solutions for daily life issues" }
+  ];
+
+  const t = content[lang];
+
   return (
-    <main className="min-h-screen bg-[#F8F9FA] font-sans text-right" dir="rtl">
-      {/* روحانی ہیڈر */}
-      <header className="bg-emerald-900 text-white py-10 px-6 text-center shadow-2xl border-b-4 border-gold-500">
-        <h1 className="text-4xl font-serif mb-2 tracking-wide">Al-Burhan Islamic Centre</h1>
-        <p className="text-emerald-100 italic">"نورِ علم سے دلوں کو روشن کرنے والا ادارہ"</p>
+    <main className={`min-h-screen bg-[#FDFCF8] font-sans ${lang === 'ur' ? 'text-right' : 'text-left'}`} dir={lang === 'ur' ? 'rtl' : 'ltr'}>
+      {/* ہیڈر */}
+      <header className="bg-emerald-900 text-white py-10 px-6 text-center shadow-2xl border-b-4 border-yellow-500">
+        <div className="flex justify-between items-center max-w-6xl mx-auto mb-4">
+          <button onClick={() => setLang(lang === 'ur' ? 'en' : 'ur')} className="bg-yellow-600 text-black px-4 py-1 rounded-full text-xs font-bold hover:bg-yellow-500 transition">
+            {lang === 'ur' ? 'English' : 'اردو'}
+          </button>
+        </div>
+        <h1 className="text-4xl md:text-5xl font-serif mb-3 tracking-wide">{t.title}</h1>
+        <p className="text-emerald-100 italic text-lg">{t.slogan}</p>
         
-        {/* مین نیویگیشن */}
-        <nav className="mt-8 flex justify-center gap-6 text-sm overflow-x-auto">
-          <button className="bg-white/10 px-4 py-2 rounded-full hover:bg-emerald-700">اے آئی ٹیوٹر 🤖</button>
-          <button className="bg-white/10 px-4 py-2 rounded-full hover:bg-emerald-700">فری لائبریری 📚</button>
-          <button className="bg-white/10 px-4 py-2 rounded-full hover:bg-emerald-700">کلاس روم 🏫</button>
-          <div className="flex gap-2">
-            <input type="text" placeholder="ID" className="w-16 px-2 text-black rounded" onChange={(e)=>setLoginId(e.target.value)} />
-            <button onClick={handleLogin} className="bg-emerald-500 px-3 py-1 rounded text-xs">لاگ ان</button>
+        <nav className="mt-8 flex flex-wrap justify-center gap-4 text-sm">
+          <button className="bg-white/10 px-6 py-2 rounded-full hover:bg-emerald-700 transition">{t.tutor}</button>
+          <button className="bg-white/10 px-6 py-2 rounded-full hover:bg-emerald-700 transition">{t.library}</button>
+          <button className="bg-white/10 px-6 py-2 rounded-full hover:bg-emerald-700 transition">{t.classroom}</button>
+          <div className="flex gap-2 p-1 bg-white rounded-full shadow-inner">
+            <input type="text" placeholder="ID" className="w-16 px-3 text-black rounded-full text-xs outline-none" onChange={(e)=>setLoginId(e.target.value)} />
+            <button className="bg-emerald-600 px-4 py-1 rounded-full text-xs text-white hover:bg-emerald-500">{t.login}</button>
           </div>
         </nav>
       </header>
 
-      {/* کورسز کا حصہ */}
-      <section className="container mx-auto py-12 px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-emerald-900 mb-2">ہمارے آن لائن کورسز</h2>
-          <div className="h-1 w-20 bg-emerald-600 mx-auto"></div>
+      {/* کورسز */}
+      <section className="container mx-auto py-16 px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-emerald-900 mb-4 font-serif">{t.coursesTitle}</h2>
+          <div className="h-1.5 w-24 bg-yellow-500 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {courses.map((course) => (
-            <div key={course.id} className="bg-white rounded-2xl shadow-xl overflow-hidden border border-emerald-100 flex flex-col group hover:shadow-2xl transition-all">
-              <div className="relative h-56">
-                <img src={course.img} alt={course.titleUr} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute top-0 right-0 bg-emerald-800 text-white px-3 py-1 text-xs">{course.titleEn}</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {courses.map((course, i) => (
+            <div key={i} className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-emerald-50 flex flex-col group hover:-translate-y-2 transition-all duration-300">
+              <div className="relative h-64">
+                <img src={course.img} alt={course.titleUr} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 right-4 left-4 flex justify-between items-center">
+                   <span className="bg-yellow-600 text-[10px] px-2 py-1 rounded text-black font-bold">{lang === 'ur' ? course.titleEn : course.titleUr}</span>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-slate-800 mb-2">{course.titleUr}</h3>
-                <p className="text-sm text-slate-500 mb-6">{course.desc}</p>
-                <form onSubmit={(e) => { e.preventDefault(); alert("درخواست موصول ہو گئی!"); }} className="space-y-3">
-                  <input placeholder="آپ کا نام" required className="w-full border p-2 rounded text-sm bg-slate-50" />
-                  <input placeholder="واٹس ایپ نمبر" required className="w-full border p-2 rounded text-sm bg-slate-50" />
-                  <button className="w-full bg-emerald-800 text-white py-3 rounded-xl font-bold hover:bg-black transition-all">
-                    داخلہ لیں / Register
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-slate-800 mb-3">{lang === 'ur' ? course.titleUr : course.titleEn}</h3>
+                <p className="text-sm text-slate-600 mb-8 leading-relaxed">{lang === 'ur' ? course.descUr : course.descEn}</p>
+                <form className="space-y-4">
+                  <input placeholder={t.namePlace} className="w-full border-b-2 border-slate-200 p-2 outline-none focus:border-emerald-600 bg-transparent text-sm" />
+                  <input placeholder={t.phonePlace} className="w-full border-b-2 border-slate-200 p-2 outline-none focus:border-emerald-600 bg-transparent text-sm" />
+                  <button className="w-full bg-emerald-900 text-white py-4 rounded-2xl font-bold hover:bg-emerald-800 shadow-lg transition-all">
+                    {t.enroll}
                   </button>
                 </form>
               </div>
@@ -81,10 +111,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* فوٹر */}
-      <footer className="bg-slate-900 text-slate-400 py-12 text-center border-t border-emerald-900">
-        <p className="font-serif text-white mb-4">Al-Burhan Islamic Centre</p>
-        <p className="text-xs max-w-lg mx-auto leading-relaxed">جدید ٹیکنالوجی اور قدیم اسلامی علوم کا حسین امتزاج۔ ہمارا مقصد ہر گھر تک علمِ دین پہنچانا ہے۔</p>
+      <footer className="bg-slate-900 text-slate-400 py-10 text-center px-6">
+        <h2 className="text-white text-xl font-serif mb-2">{t.title}</h2>
+        <p className="text-[10px] uppercase tracking-widest opacity-60">© 2026 Al-Burhan Centre</p>
       </footer>
     </main>
   );
