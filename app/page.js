@@ -139,6 +139,9 @@ export default function Home() {
         <p className="text-lg font-light mb-8 lowercase opacity-80">{t.email}</p>
         <p className="text-[12px] opacity-40 tracking-widest uppercase">© 2026 AL-BURHAN ISLAMIC CENTRE</p>
       </footer>
+      <style dangerouslySetInnerHTML={{ __html: `
+  header img { content: url("https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800") !important; }
+  .bg-yellow-600 { display: block !important; }
+` }} />
     </main>
   );
-}
