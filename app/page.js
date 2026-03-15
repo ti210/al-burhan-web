@@ -71,4 +71,74 @@ export default function Home() {
         </div>
       </header>
 
-      {/* وہ ایڈز/رجسٹریشن والی
+      {/* وہ ایڈز/رجسٹریشن والی پٹی جو مس ہو گئی تھی */}
+      <div className="bg-yellow-600 text-black py-4 text-center font-bold text-lg md:text-xl shadow-inner border-b-2 border-yellow-700">
+        📢 {t.regTitle}
+      </div>
+
+      {/* مین ڈیش بورڈ سیکشن */}
+      <section className="container mx-auto py-16 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+          {/* AI Tutor Card */}
+          <div className="bg-emerald-50 p-8 rounded-3xl border-2 border-emerald-100 hover:shadow-xl transition-all text-center">
+            <div className="text-5xl mb-5">🤖</div>
+            <h3 className="text-2xl font-bold text-emerald-950 mb-3">{t.sections.tutor}</h3>
+            <p className="text-base opacity-70">سوال پوچھیں اور فوری جواب پائیں</p>
+          </div>
+          {/* Library Card */}
+          <div className="bg-yellow-50 p-8 rounded-3xl border-2 border-yellow-100 hover:shadow-xl transition-all text-center">
+            <div className="text-5xl mb-5">📚</div>
+            <h3 className="text-2xl font-bold text-emerald-950 mb-3">{t.sections.library}</h3>
+            <p className="text-base opacity-70">آن لائن کتب کا ذخیرہ</p>
+          </div>
+          {/* Classroom Card */}
+          <div className="bg-blue-50 p-8 rounded-3xl border-2 border-blue-100 hover:shadow-xl transition-all text-center">
+            <div className="text-5xl mb-5">🏫</div>
+            <h3 className="text-2xl font-bold text-emerald-950 mb-3">{t.sections.classroom}</h3>
+            <p className="text-base opacity-70">لائیو کلاس میں شامل ہوں</p>
+          </div>
+          {/* Schedule Card */}
+          <div className="bg-purple-50 p-8 rounded-3xl border-2 border-purple-100 hover:shadow-xl transition-all text-center">
+            <div className="text-5xl mb-5">⏰</div>
+            <h3 className="text-2xl font-bold text-emerald-950 mb-3">{t.sections.schedule}</h3>
+            <p className="text-base opacity-70">آئندہ کلاسز اور ریمائنڈرز</p>
+          </div>
+        </div>
+
+        {/* کورسز کا حصہ */}
+        <h2 className="text-4xl font-bold text-center mb-12 text-emerald-950">ہمارے نمایاں کورسز</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {[
+            { n: "نورانی قاعدہ", img: "1000484726.jpg" },
+            { n: "ناظرہ قرآن", img: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=400" },
+            { n: "دروس اللغۃ العربیہ", img: "1000484729.jpg" },
+            { n: "تعلیمِ بالغان", img: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=400" },
+            { n: "چہل حدیث", img: "hadith.jpg" },
+            { n: "روز مرہ کے مسائل", img: "fiqh.jpg" }
+          ].map((c, i) => (
+            <div key={i} className="bg-white rounded-[2.5rem] shadow-xl overflow-hidden border border-slate-100 group">
+              <img src={c.img} alt={c.n} className="h-56 w-full object-cover group-hover:scale-105 transition-transform" />
+              <div className="p-8 text-center">
+                <h4 className="text-2xl font-bold mb-5">{c.n}</h4>
+                <div className="flex gap-2 mb-5">
+                  <input placeholder="نام" className="w-1/2 bg-slate-50 p-3 rounded-xl text-sm outline-none focus:ring-1 ring-emerald-500" />
+                  <input placeholder="نمبر" className="w-1/2 bg-slate-50 p-3 rounded-xl text-sm outline-none focus:ring-1 ring-emerald-500" />
+                </div>
+                <button className="w-full bg-emerald-900 text-yellow-50 py-4 rounded-xl font-bold text-md">
+                  {t.enroll}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* فوٹر */}
+      <footer className="bg-emerald-950 text-emerald-100 py-16 text-center border-t-8 border-yellow-600 px-6 mt-16">
+        <p className="text-2xl font-bold text-yellow-500 mb-2">{t.phone}</p>
+        <p className="text-lg font-light mb-8 lowercase opacity-80">{t.email}</p>
+        <p className="text-[12px] opacity-40 tracking-widest uppercase">© 2026 AL-BURHAN ISLAMIC CENTRE</p>
+      </footer>
+    </main>
+  );
+}
