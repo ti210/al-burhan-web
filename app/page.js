@@ -1,94 +1,99 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 
 const courses = [
-  { title: "Noorani Qaida", category: "Foundation", desc: "Start your journey of Quranic recitation with proper Tajweed and pronunciation." },
-  { title: "Quran Reading (Nazira)", category: "Foundation", desc: "Practice reciting the Holy Quran with melody and correct rules of Tajweed." },
-  { title: "Duroos-ul-Lughat-ul-Arabia", category: "Language", desc: "The world-renowned curriculum for learning Arabic speaking and grammar." },
-  { title: "Quranic Arabic", category: "Language", desc: "Understand the vocabulary and linguistic style of the Holy Quran directly." },
-  { title: "Chahal Hadith", category: "Ethics", desc: "Study 40 essential Hadiths that provide a complete code for an ideal life." },
-  { title: "Taleem-ul-Islam", category: "Jurisprudence", desc: "A comprehensive guide to Islamic beliefs, worship, and basic rulings." },
-  { title: "Daily Life Fiqh", category: "Jurisprudence", desc: "Solutions to contemporary issues and daily matters like Salah and Taharah." },
-  { title: "Adult Education", category: "Special Course", desc: "A simplified course for adults focusing on basic Deen and understanding Salah." }
+  { 
+    titleUr: "نورانی قاعدہ", titleEn: "Noorani Qaida", category: "Foundation", 
+    desc: "A spiritual beginning for children to learn the Holy Quran with Tajweed.",
+    img: "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=400" 
+  },
+  { 
+    titleUr: "ناظرہ قرآن", titleEn: "Quran Recitation", category: "Foundation", 
+    desc: "Illuminate your heart with the melodious recitation of the Book of Allah.",
+    img: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80&w=400" 
+  },
+  { 
+    titleUr: "دروس اللغۃ العربیہ", titleEn: "Arabic Language", category: "Language", 
+    desc: "Connect with the language of the Quran and the Prophet (PBUH).",
+    img: "https://images.unsplash.com/photo-1590071089561-2087ff1f918e?auto=format&fit=crop&q=80&w=400" 
+  },
+  { 
+    titleUr: "چہل حدیث", titleEn: "Chahal Hadith", category: "Wisdom", 
+    desc: "Forty gems of prophetic wisdom to guide your daily life.",
+    img: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&q=80&w=400" 
+  },
+  { 
+    titleUr: "تعلیمِ بالغان", titleEn: "Adult Learning", category: "Special", 
+    desc: "It is never too late to gain the light of sacred knowledge.",
+    img: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&q=80&w=400" 
+  },
+  { 
+    titleUr: "روز مرہ کے مسائل", titleEn: "Daily Life Fiqh", category: "Practice", 
+    desc: "Walk the path of Shariah in every step of your life.",
+    img: "https://images.unsplash.com/photo-1512632510442-03033f96950e?auto=format&fit=crop&q=80&w=400" 
+  }
 ];
 
 export default function Home() {
   const whatsappNumber = "923018355308";
 
-  return (
-    <main className="min-h-screen bg-white">
-      {/* Language Switcher Placeholder (Google Translate Integration) */}
-      <div className="bg-slate-100 py-2 px-4 flex justify-end">
-        <div id="google_translate_element"></div>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            function googleTranslateElementInit() {
-              new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-            }
-          `
-        }} />
-        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-      </div>
+  const handleRegister = (courseName) => {
+    const message = `السلام علیکم! میں البرہان اسلامک سنٹر کے کورس "${courseName}" میں رجسٹریشن کروانا چاہتا/چاہتی ہوں۔ براہ کرم رہنمائی فرمائیں۔`;
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+  };
 
-      {/* Header Section */}
-      <header className="bg-emerald-900 text-white py-16 text-center shadow-lg">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Al-Burhan Islamic Centre</h1>
-        <p className="text-xl text-emerald-100 italic">Global Institute for Research and Modern Training</p>
+  return (
+    <main className="min-h-screen bg-[#FDFCF8] font-sans">
+      {/* روحانی ہیڈر */}
+      <header className="bg-gradient-to-b from-[#064E3B] to-[#065F46] text-white py-20 text-center shadow-2xl relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/islamic-art.png')]"></div>
+        <div className="relative z-10 px-4">
+          <h1 className="text-4xl md:text-6xl font-serif mb-2 tracking-wide">Al-Burhan Islamic Centre</h1>
+          <h2 className="text-3xl font-arabic mb-6 text-emerald-200 opacity-90" dir="rtl">البرہان اسلامک سنٹر</h2>
+          <div className="h-1 w-32 bg-emerald-400 mx-auto rounded-full mb-6"></div>
+          <p className="text-xl text-emerald-50 italic max-w-2xl mx-auto">"Seeking knowledge is an obligation upon every Muslim"</p>
+        </div>
       </header>
 
-      {/* Courses Section */}
-      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4 text-center">
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-slate-800 mb-4">Our Short Online Courses</h2>
-            <p className="text-slate-500">Click the registration button to join via WhatsApp</p>
-            <div className="h-1 w-24 bg-emerald-600 mx-auto mt-4"></div>
+      {/* کورسز کارڈز */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-800 mb-2 italic">Sacred Knowledge Courses</h2>
+            <p className="text-emerald-700 font-arabic text-xl" dir="rtl">ہمارے آن لائن تعلیمی نصاب</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-            {courses.map((course, index) => {
-              const message = `Assalam-o-Alaikum!
-I would like to register for the course: "${course.title}" at Al-Burhan Islamic Centre.
-
-My Details:
-Name: 
-Age: 
-Country: 
-Phone: 
-Preferred Time: 
-
-Please provide further details.`;
-
-              return (
-                <div key={index} className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-emerald-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                  <div>
-                    <span className="inline-block text-[10px] font-bold tracking-wider uppercase bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full mb-4">
-                      {course.category}
-                    </span>
-                    <h3 className="text-xl font-bold text-slate-800 mb-2">{course.title}</h3>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                      {course.desc}
-                    </p>
-                  </div>
-                  
-                  <a 
-                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-center bg-emerald-600 text-white py-3 rounded-xl font-bold hover:bg-emerald-700 active:scale-95 shadow-md transition-all"
-                  >
-                    Register Now
-                  </a>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {courses.map((course, index) => (
+              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-emerald-50 group">
+                <div className="h-56 overflow-hidden">
+                  <img src={course.img} alt={course.titleEn} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 </div>
-              );
-            })}
+                <div className="p-8 text-right" dir="rtl">
+                  <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full mb-4 inline-block tracking-widest uppercase">{course.category}</span>
+                  <h3 className="text-2xl font-bold text-slate-800 mb-1 leading-tight">{course.titleUr}</h3>
+                  <h4 className="text-sm text-emerald-600 font-medium mb-4 italic" dir="ltr">{course.titleEn}</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-8 h-12" dir="ltr">{course.desc}</p>
+                  
+                  <button 
+                    onClick={() => handleRegister(`${course.titleUr} / ${course.titleEn}`)}
+                    className="w-full bg-emerald-800 text-white py-3 rounded-lg font-bold hover:bg-black transition-all duration-300 shadow-sm flex items-center justify-center gap-2"
+                  >
+                    Register via WhatsApp / رجسٹریشن
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-10 text-center text-sm">
-        <div className="mb-4 text-emerald-500 font-bold">Al-Burhan Islamic Centre</div>
-        <p>© {new Date().getFullYear()} All Rights Reserved | Talha Irfan</p>
+      {/* فوٹر */}
+      <footer className="bg-emerald-950 text-emerald-200 py-16 text-center border-t border-emerald-900 px-4">
+        <p className="text-xl font-serif mb-4 tracking-wider">Al-Burhan Islamic Centre</p>
+        <p className="text-xs opacity-60 max-w-md mx-auto mb-8 leading-relaxed">Dedicated to preserving and spreading sacred knowledge in the modern era.</p>
+        <div className="h-px w-20 bg-emerald-800 mx-auto mb-8"></div>
+        <p className="text-[10px] opacity-30 tracking-widest uppercase">© {new Date().getFullYear()} Talha Irfan</p>
       </footer>
     </main>
   );
