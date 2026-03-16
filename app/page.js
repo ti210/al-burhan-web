@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#FDFCF8] text-slate-900" dir={lang === 'ur' ? 'rtl' : 'ltr'}>
       
-      {/* روحانی ہیڈر مع فکسڈ تصاویر */}
+      {/* روحانی ہیڈر مع کعبہ و مدینہ امیج */}
       <header className="relative h-[400px] flex items-center justify-center overflow-hidden border-b-8 border-yellow-600 bg-emerald-950">
         <div className="absolute inset-0 flex opacity-40 z-0">
           <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800" alt="Kaaba" className="w-1/2 h-full object-cover" />
@@ -72,6 +72,7 @@ export default function Home() {
         </div>
       </header>
 
+      {/* رجسٹریشن پٹی (ایڈز لائن) - اب بالکل فکسڈ ہے */}
       <div className="bg-yellow-600 text-black py-4 text-center font-bold text-lg md:text-xl shadow-inner border-b-2 border-yellow-700 sticky top-0 z-40">
         📢 {t.regTitle}
       </div>
@@ -113,10 +114,10 @@ export default function Home() {
                 <h4 className="text-2xl font-bold mb-1 bg-white">{c.n}</h4>
                 <p className="text-emerald-700 font-bold mb-5 bg-white">{t.feeLabel} ${c.fee} / Month</p>
                 <div className="flex gap-2 mb-5">
-                  <input placeholder="نام" className="w-1/2 bg-slate-50 p-3 rounded-xl text-sm" />
-                  <input placeholder="نمبر" className="w-1/2 bg-slate-50 p-3 rounded-xl text-sm" />
+                  <input placeholder="نام" className="w-1/2 bg-slate-50 p-3 rounded-xl text-sm outline-none border border-emerald-100" />
+                  <input placeholder="نمبر" className="w-1/2 bg-slate-50 p-3 rounded-xl text-sm outline-none border border-emerald-100" />
                 </div>
-                <button className="w-full bg-emerald-900 text-yellow-50 py-4 rounded-xl font-bold">{t.enroll}</button>
+                <button className="w-full bg-emerald-900 text-yellow-50 py-4 rounded-xl font-bold transition-colors hover:bg-emerald-800">{t.enroll}</button>
               </div>
             </div>
           ))}
